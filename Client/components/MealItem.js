@@ -1,5 +1,6 @@
 import { View, Text, Pressable, Image, StyleSheet } from "react-native";
 import {useNavigation} from '@react-navigation/native'
+import MealDetails from "./MealDetails";
 
 export default function MealItem({
   title,
@@ -22,11 +23,7 @@ function selectMeal(){
       <Pressable onPress={selectMeal} style={({ pressed }) => (pressed ? styles.buttonPressed : null)}>
         <Image style={styles.image} source={{ uri: img }} />
         <Text style={styles.title}>{title}</Text>
-        <View style={styles.details}>
-          <Text>- {duration}m </Text>
-          <Text> - {complexity} </Text>
-          <Text> - {affordability} -</Text>
-        </View>
+        <MealDetails duration={duration} complexity={complexity} affordability={affordability}/>
       </Pressable>
     </View>
   );
