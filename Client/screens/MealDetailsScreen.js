@@ -1,17 +1,37 @@
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { MEALS } from "../data/dummy-data";
 import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/MealDetails/Subtitle";
 import List from "../components/MealDetails/List";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
+import IconButton from "../components/IconButton";
 
-export default function MealDetailsScreen({ route,navigation }) {
+export default function MealDetailsScreen({ route, navigation }) {
   const mealId = route.params.mealId;
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
-  useEffect(()=>{navigation.setOptions({title:"Meal Details"})},[mealId,navigation])
+
+  const headerButtonPressHandler = () => {
+    console.log("pressed");
+  };
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: "Meal Details",
+      headerRight: () => (
+        <IconButton icon={"thumbs-up-outline"} onPress={headerButtonPressHandler}/>
+      ),
+    });
+  }, [headerButtonPressHandler, navigation]);
 
   return (
-    <ScrollView style={styles.rootContainer} >
+    <ScrollView style={styles.rootContainer}>
       <Image style={styles.img} source={{ uri: selectedMeal.imageUrl }} />
       <Text style={styles.title}>{selectedMeal.title}</Text>
       <MealDetails
@@ -21,13 +41,12 @@ export default function MealDetailsScreen({ route,navigation }) {
         styleProp={{ color: "white" }}
       />
 
-        <View>
-          <Subtitle text={"Ingredients:"} />
-          <List list={selectedMeal.ingredients}/>
-          <Subtitle text={"Steps:"} />
-          <List list={selectedMeal.steps}/>
-        </View>
-
+      <View>
+        <Subtitle text={"Ingredients:"} />
+        <List list={selectedMeal.ingredients} />
+        <Subtitle text={"Steps:"} />
+        <List list={selectedMeal.steps} />
+      </View>
     </ScrollView>
   );
 }
@@ -44,7 +63,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "white",
   },
-  rootContainer:{
-    marginBottom:60,
-  }
+  rootContainer: {
+    marginBottom: 60,
+  },
 });

@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   itemText: {
     color: "#351401",
     margin:10,
+    textAlign:"center"
   },
   indexItem: {
     borderRightColor: "#5d3e2d",
