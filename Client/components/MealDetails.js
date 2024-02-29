@@ -1,7 +1,7 @@
 import {Text,View,StyleSheet} from 'react-native'
 
 export default function MealDetails({duration,complexity,affordability,styleProp}){
-    const detailsProps =[duration,complexity,affordability]
+    const detailsProps =[duration+"m",complexity,affordability]
     return (
         <View style={styles.details}>
             {detailsProps.map((prop,index)=><Text key={index} style={[styleProp,styles.text]}> -{prop}</Text>)}

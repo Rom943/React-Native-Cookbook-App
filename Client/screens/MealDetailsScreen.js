@@ -3,10 +3,12 @@ import { MEALS } from "../data/dummy-data";
 import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/MealDetails/Subtitle";
 import List from "../components/MealDetails/List";
+import { useEffect } from "react";
 
-export default function MealDetailsScreen({ route }) {
+export default function MealDetailsScreen({ route,navigation }) {
   const mealId = route.params.mealId;
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+  useEffect(()=>{navigation.setOptions({title:"Meal Details"})},[mealId,navigation])
 
   return (
     <ScrollView style={styles.rootContainer} >
