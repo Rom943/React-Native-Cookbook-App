@@ -25,7 +25,7 @@ export default function MealDetailsScreen({ route, navigation }) {
     navigation.setOptions({
       title: "Meal Details",
       headerRight: () => (
-        <IconButton icon={"thumbs-up-outline"} onPress={headerButtonPressHandler}/>
+        <IconButton icon={"star"} onPress={headerButtonPressHandler}/>
       ),
     });
   }, [headerButtonPressHandler, navigation]);
