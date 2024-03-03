@@ -7,10 +7,13 @@ export default function List({ list }) {
         {list.map((item, index) => (
           <View style={styles.listItem} key={index}>
             <View style={styles.indexItem}>
-            <Text style={[ styles.indexItem,styles.itemText]}>{index+1}</Text>
+              <Text style={[styles.indexItem, styles.itemText]}>
+                {index + 1}
+              </Text>
             </View>
-           
-            <Text style={styles.itemText}>{item}</Text>
+            <View style={styles.textView}>
+              <Text style={styles.itemText}>{item}</Text>
+            </View>
           </View>
         ))}
       </View>
@@ -20,26 +23,29 @@ export default function List({ list }) {
 
 const styles = StyleSheet.create({
   listItem: {
+    flex: 1,
     borderRadius: 6,
     paddingHorizontal: 8,
     paddingVertical: 5,
     backgroundColor: "#e2b497",
     margin: 5,
-    width: "85%",
     flexDirection: "row",
     alignItems: "center",
-    
+    marginHorizontal:25
   },
   itemText: {
     color: "#351401",
-    margin:10,
-    textAlign:"center"
+    padding: 10,
   },
   indexItem: {
     borderRightColor: "#5d3e2d",
     borderRightWidth: 1,
   },
-  container:{
-    alignItems:"center"
+  container: {
+    alignItems: "center",
+    padding: 2,
+  },
+  textView:{
+    flex:1
   }
 });
